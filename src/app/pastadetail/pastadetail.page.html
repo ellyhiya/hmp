@@ -1,0 +1,20 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>pastadetail</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">{{pastas[index].name}}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-item>
+    <div class="ion-padding" *ngIf="pastas[index]">
+      <ion-img [src]="pastas[index].url"></ion-img>
+      <h2>Rp {{ pastas[index].price }}</h2>
+      <p>{{ pastas[index].description }}</p>
+    </div>
+  </ion-item>
+</ion-content>

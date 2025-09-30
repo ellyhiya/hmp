@@ -1,0 +1,7 @@
+{
+  "name": "foodapp_c",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
