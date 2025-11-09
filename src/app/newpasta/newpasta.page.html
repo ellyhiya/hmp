@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>newpasta</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">newpasta</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-list lines="inset">
+    <ion-item>
+      <ion-input labelPlacement="floating" label="Masukkan nama: " [(ngModel)]="new_name" />
+    </ion-item>
+    <ion-item>
+      <ion-textarea labelPlacement="floating" placeholder="Deskripsi" [(ngModel)]="new_desc" />
+    </ion-item>
+    <ion-item>
+      <ion-input labelPlacement="floating" placeholder="URL" [(ngModel)]="new_url" />
+    </ion-item>
+    <ion-select [(ngModel)]="arr_price" label="Price" labelPlacement="floating">
+      <ion-select-option *ngFor="let price of arr_price" [value]="price">{{price}}</ion-select-option>
+    </ion-select>
+    <ion-checkbox [checked]="new_spicy" [(ngModel)]="new_spicy" labelPlacement="end" label="Spicy"></ion-checkbox>
+
+    <ion-item>
+      <ion-button id="btnsubmit" (click)="submitpasta()">Submit</ion-button>
+    </ion-item>
+  </ion-list>
+</ion-content>
