@@ -12,10 +12,34 @@ export class PastaPage implements OnInit {
 
   jenistampilan="accordion";
   pastas:any[]=[]
-ngOnInit(): void {
-  this.pastas = this.foodservice.pastas;
+  searchTerm: string = '';
+
+  get filteredPastas() {
+  if (!this.pastas || !this.pastas.length) {
+    return [];
+  }
+  const q = (this.searchTerm || '').trim().toLowerCase();
+  if (!q) {
+    return this.pastas;
+  }
+
+  const result = this.pastas.filter(p =>
+    (p.name || '').toLowerCase().includes(q) ||
+    (p.description || '').toLowerCase().includes(q)
+  );
+  
+  console.log('Filter term:', q, 'Results:', result);
+  return result;
 }
 
+ngOnInit() {
+  //this.pastas=this.foodservice.pastas
+   this.foodservice.pastaList().subscribe(
+    (data)=> {
+        this.pastas=data;
+      }
+   );
+ }
   chunkArray(arr: any[], chunkSize: number): any[][] {
   const result = [];
   for (let i = 0; i < arr.length; i += chunkSize) {

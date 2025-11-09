@@ -35,6 +35,7 @@ const routes: Routes = [
     path: 'newpasta',
     loadChildren: () => import('./newpasta/newpasta.module').then( m => m.NewpastaPageModule)
   },
+  
   // {
   //   path: 'details/:id', //id is a parameter
   //   loadChildren: ()=>import('./details/details.module').then(m=>m.DetailsPageModule)

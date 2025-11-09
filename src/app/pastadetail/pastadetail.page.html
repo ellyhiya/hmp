@@ -13,11 +13,17 @@
   <ion-item>
     <div class="ion-padding" *ngIf="pastas[index]">
       <ion-img [src]="pastas[index].url"></ion-img>
-      <p ([*ngIf="pastas[index].spicy==true'"])>"spicy"</p>
-
-
+      <p *ngIf="pastas[index].spicy==true">spicy</p>
       <h2>Rp {{ pastas[index].price }}</h2>
       <p>{{ pastas[index].description }}</p>
+      <p>{{ pastas[index].detail }}</p>
+      <ion-label>Pasta Recipe Instruction:</ion-label>
+      <ol >
+        <li *ngFor="let ins of pastas.instructions">
+          {{ins.instruction}}
+        </li>
+      </ol>
+
     </div>
   </ion-item>
 </ion-content>

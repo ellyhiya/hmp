@@ -1,10 +1,18 @@
 import { Injectable } from '@angular/core';
-
+ import { HttpClient } from '@angular/common/http';
+ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
 export class Foodservice {
-  
+  constructor(private http: HttpClient) { }
+pastaList():Observable<any> {
+  return this.http.get("https://ubaya.cloud/hybrid/160423089/products.php");
+ }
+ pastaDetail(id:number):Observable<any> {
+  return this.http.get("https://ubaya.cloud/hybrid/160423089/pasta_detail.php?id="+id);
+}
+
   pastas = [
     {
       name: 'SHRIMP SCAMPI',

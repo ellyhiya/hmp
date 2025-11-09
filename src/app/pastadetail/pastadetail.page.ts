@@ -13,12 +13,17 @@ export class PastadetailPage implements OnInit {
   constructor(private route: ActivatedRoute, private foodservice: Foodservice) {}
   ngOnInit() {
     this.route.params.subscribe((params) => {
-      this.index = params['index']; // value of 'index' should match the route parameter name
+      //this.index = params['index']; // value of 'index' should match the route parameter name
       // You can use the 'index' parameter for your logic here
+      this.foodservice.pastaDetail(params['index']).subscribe(
+      (data)=> {
+       this.pastas=data;
+      }
+     );
     });
-      this.pastas=this.foodservice.pastas
+      //this.pastas=this.foodservice.pastas
 
   }
-  pastas:any[]=[]
+  pastas:any={}
   
 }

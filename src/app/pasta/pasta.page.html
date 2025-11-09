@@ -16,8 +16,21 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-accordion-group expand="inset" *ngIf="jenistampilan === 'accordion'">
+  <ion-searchbar
+    [(ngModel)]="searchTerm"
+    placeholder="Search pastas by name or description">
+  </ion-searchbar>
 
+  <ion-list *ngIf="searchTerm!=''">
+  <ion-item *ngFor="let pasta of filteredPastas">
+    <ion-label>
+      <h2>{{ pasta.name }}</h2>
+      <p>{{ pasta.description }}</p>
+    </ion-label>
+  </ion-item>
+</ion-list>
+
+  <ion-accordion-group expand="inset" *ngIf="jenistampilan === 'accordion' && searchTerm==''">
     <ion-accordion *ngFor="let p of pastas">
       <ion-item slot="header" color="light">
         <ion-label>{{p.name}}</ion-label>
@@ -32,7 +45,7 @@
     </ion-accordion>
   </ion-accordion-group>
 
-  <ng-container *ngIf="jenistampilan=='card'">
+  <ng-container *ngIf="jenistampilan=='card' && searchTerm==''">
     <ion-card *ngFor="let p of pastas">
       <img src="{{p.url}}" />
       <ion-card-header>
@@ -48,14 +61,14 @@
   </ng-container>
 
   <ng-container>
-    <ion-grid *ngIf="jenistampilan=='grid'">
+    <ion-grid *ngIf="jenistampilan=='grid' && searchTerm==''">
       <ion-row *ngFor="let pastas2 of chunkArray(pastas, 2); let i = index">
         <ion-col *ngFor="let pasta of pastas2; let i2 = index">
           <ion-list>
             <ion-item>
               <ion-img [src]="pasta.url"></ion-img>
             </ion-item>
-            <ion-item routerLink="/pastadetail/{{(i*2)+i2}}">
+            <ion-item routerLink="/pastadetail/{{pasta.id}}">
               {{pasta.name}}
             </ion-item>
             <ion-item> Rp {{pasta.price}} </ion-item>
