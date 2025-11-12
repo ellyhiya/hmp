@@ -16,19 +16,17 @@
 </ion-header>
 
 <ion-content [fullscreen]="true" class="ion-padding">
-  <ion-searchbar
-    [(ngModel)]="searchTerm"
-    placeholder="Search pastas by name or description">
+  <ion-searchbar [(ngModel)]="searchTerm" placeholder="Search pastas by name or description">
   </ion-searchbar>
 
   <ion-list *ngIf="searchTerm!=''">
-  <ion-item *ngFor="let pasta of filteredPastas">
-    <ion-label>
-      <h2>{{ pasta.name }}</h2>
-      <p>{{ pasta.description }}</p>
-    </ion-label>
-  </ion-item>
-</ion-list>
+    <ion-item *ngFor="let pasta of filteredPastas">
+      <ion-label>
+        <h2>{{ pasta.name }}</h2>
+        <p>{{ pasta.description }}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
 
   <ion-accordion-group expand="inset" *ngIf="jenistampilan === 'accordion' && searchTerm==''">
     <ion-accordion *ngFor="let p of pastas">

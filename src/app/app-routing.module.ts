@@ -4,7 +4,7 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then( m => m.HomePageModule)
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
     path: '',
@@ -13,29 +13,33 @@ const routes: Routes = [
   },
   {
     path: 'about',
-    loadChildren: () => import('./about/about.module').then(m=>m.AboutPageModule)
+    loadChildren: () => import('./about/about.module').then(m => m.AboutPageModule)
   },
   {
     path: 'list',
-    loadChildren: () => import('./list/list.module').then( m => m.ListPageModule)
+    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
   },
   {
     path: 'setting',
-    loadChildren: () => import('./setting/setting.module').then( m => m.SettingPageModule)
+    loadChildren: () => import('./setting/setting.module').then(m => m.SettingPageModule)
   },
   {
     path: 'pasta',
-    loadChildren: () => import('./pasta/pasta.module').then( m => m.PastaPageModule)
+    loadChildren: () => import('./pasta/pasta.module').then(m => m.PastaPageModule)
   },
   {
     path: 'pastadetail/:index',
-    loadChildren: () => import('./pastadetail/pastadetail.module').then( m => m.PastadetailPageModule)
+    loadChildren: () => import('./pastadetail/pastadetail.module').then(m => m.PastadetailPageModule)
   },
   {
     path: 'newpasta',
-    loadChildren: () => import('./newpasta/newpasta.module').then( m => m.NewpastaPageModule)
+    loadChildren: () => import('./newpasta/newpasta.module').then(m => m.NewpastaPageModule)
   },
-  
+  {
+    path: 'editpasta/:id',
+    loadChildren: () => import('./editpasta/editpasta.module').then(m => m.EditpastaPageModule)
+  },
+
   // {
   //   path: 'details/:id', //id is a parameter
   //   loadChildren: ()=>import('./details/details.module').then(m=>m.DetailsPageModule)

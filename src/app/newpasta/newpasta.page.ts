@@ -11,14 +11,14 @@ export class NewpastaPage implements OnInit {
   new_name = '';
   new_desc = '';
   arr_price: number[] = [];
-  new_price=0;
+  new_price = 0;
   new_url = '';
   new_spicy: boolean = false;
 
-  constructor(private foodservice: Foodservice) {}
+  constructor(private foodservice: Foodservice) { }
 
   ngOnInit() {
-    this.arr_price = this.generateNumberOptions(30000, 50000, 20000);
+    this.arr_price = this.generateNumberOptions(30000, 50000, 2000);
   }
   generateNumberOptions(start: number, end: number, step: number): number[] {
     const options: number[] = [];
@@ -27,14 +27,25 @@ export class NewpastaPage implements OnInit {
     }
     return options;
   }
-
   submitpasta() {
-    this.foodservice.addPasta(
-      this.new_name,
-      this.new_url,
-      this.new_desc,
-      this.new_price,
-      this.new_spicy,
-    );
+    //this.foodservice.addPasta(this.new_name,this.new_url,this.new_desc,this.new_price)
+    this.foodservice.addPasta(this.new_name,
+      this.new_url, this.new_desc, this.new_price, this.new_spicy).subscribe((response: any) => {
+        if (response.result === 'success') {
+          alert("success")
+        }
+        else {
+          alert(response.message)
+        }
+      });
   }
+  // submitpasta() {
+  //   this.foodservice.addPasta(
+  //     this.new_name,
+  //     this.new_url,
+  //     this.new_desc,
+  //     this.new_price,
+  //     this.new_spicy,
+  //   );
+  // }
 }

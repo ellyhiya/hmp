@@ -1,29 +1,54 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>pastadetail</ion-title>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" color="secondary" routerLink="/editpasta/{{pastas.id}}">
+        <ion-icon name="pencil-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button fill="solid" color="danger" (click)="deletepasta(pastas.id)">
+        <ion-icon name="trash-outline"></ion-icon>
+      </ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
-      <ion-title size="large">{{pastas[index].name}}</ion-title>
+      <ion-title size="large">{{pastas.name}}</ion-title>
     </ion-toolbar>
   </ion-header>
+
   <ion-item>
-    <div class="ion-padding" *ngIf="pastas[index]">
-      <ion-img [src]="pastas[index].url"></ion-img>
-      <p *ngIf="pastas[index].spicy==true">spicy</p>
-      <h2>Rp {{ pastas[index].price }}</h2>
-      <p>{{ pastas[index].description }}</p>
-      <p>{{ pastas[index].detail }}</p>
+    <div class="ion-padding" *ngIf="pastas">
+      <ion-img [src]="pastas.url"></ion-img>
+      <p *ngIf="pastas.spicy">spicy</p>
+      <h2>Rp {{ pastas.price }}</h2>
+      <p>{{ pastas.description }}</p>
+      <p>{{ pastas.detail }}</p>
       <ion-label>Pasta Recipe Instruction:</ion-label>
-      <ol >
+      <ol>
         <li *ngFor="let ins of pastas.instructions">
-          {{ins.instruction}}
+          {{ ins.step ? (ins.step + '. ') : '' }}{{ ins.instruction }}
         </li>
       </ol>
+      <div class="ion-padding">
+        <ion-item>
+          <ion-label position="floating">Step number</ion-label>
+          <ion-input type="number" [(ngModel)]="step"></ion-input>
+        </ion-item>
 
+        <ion-item>
+          <ion-label position="floating">Instruction</ion-label>
+          <ion-input [(ngModel)]="instruction"></ion-input>
+        </ion-item>
+
+        <ion-button fill="solid" color="danger" (click)="addInstruction(pastas.id)">
+          Add Instruction
+        </ion-button>
+      </div>
     </div>
   </ion-item>
 </ion-content>
