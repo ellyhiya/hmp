@@ -10,24 +10,26 @@
       <ion-title size="large">cart</ion-title>
     </ion-toolbar>
   </ion-header>
+
   <ion-grid>
     <ion-row>
       <ion-col>Name</ion-col>
       <ion-col>Price</ion-col>
       <ion-col>Num</ion-col>
+      <ion-col>Actions</ion-col>
     </ion-row>
+
     <ion-row *ngFor="let item of items">
-      <ion-col>{{item.name}}</ion-col>
-      <ion-col>{{item.price}}</ion-col>
-      <ion-col>{{item.num}}</ion-col>
+      <ion-col>{{ item.name }}</ion-col>
+      <ion-col>{{ item.price }}</ion-col>
+      <ion-col>{{ item.num }}</ion-col>
+
+      <!-- ACTION BUTTONS -->
+      <ion-col>
+        <ion-button size="small" (click)="increaseNum(item.id)">+</ion-button>
+        <ion-button size="small" (click)="decreaseNum(item.id)">-</ion-button>
+      </ion-col>
     </ion-row>
   </ion-grid>
-  <ion-col>
-    {{item.num}}
-    <ion-button (click)="increaseNum(item.id)">+</ion-button>
-  </ion-col>
-  <ion-col>
-    {{item.num}}
-    <ion-button (click)="decreaseNum(item.id)">-</ion-button>
-  </ion-col>
+
 </ion-content>
