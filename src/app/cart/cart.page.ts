@@ -31,5 +31,13 @@ export class CartPage implements OnInit {
         alert('Error :' + error);
       });
   }
+  decreaseNum(id: number) {
+    this.dex.decreaseNum(id).then(() => {
+      this.loadItems()
+    })
+      .catch(error => {
+        alert('Error :' + error);
+      });
+  }
 
 }
