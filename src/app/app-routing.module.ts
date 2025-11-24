@@ -39,6 +39,10 @@ const routes: Routes = [
     path: 'editpasta/:id',
     loadChildren: () => import('./editpasta/editpasta.module').then(m => m.EditpastaPageModule)
   },
+  {
+    path: 'cart',
+    loadChildren: () => import('./cart/cart.module').then( m => m.CartPageModule)
+  },
 
   // {
   //   path: 'details/:id', //id is a parameter

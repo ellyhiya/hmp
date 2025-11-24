@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Foodservice } from '../foodservice';
+import { DexieService } from '../dexie';
 
 @Component({
   selector: 'app-pasta',
@@ -8,7 +9,9 @@ import { Foodservice } from '../foodservice';
   standalone: false,
 })
 export class PastaPage implements OnInit {
-  constructor(private foodservice: Foodservice) { }
+  constructor(private foodservice: Foodservice,
+    private dex: DexieService) { }
+
 
   jenistampilan = "accordion";
   pastas: any[] = []
@@ -53,5 +56,13 @@ export class PastaPage implements OnInit {
     return result;
   }
 
+  addtocart(id: number, name: string, price: number, num: number) {
+    this.dex.addItem(id, name, price, num).then(() => {
+      alert('Item added successfully.');
+    })
+      .catch(error => {
+        alert('Error adding item:' + error);
+      });
+  }
 
 }

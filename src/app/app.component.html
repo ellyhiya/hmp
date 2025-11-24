@@ -43,42 +43,48 @@
             <ion-label>New Pasta</ion-label>
           </ion-item>
         </ion-menu-toggle>
+
+        <ion-item routerLink="/cart">
+          <ion-icon name="cart-outline" slot="start"></ion-icon>
+          <ion-label>Cart</ion-label>
+        </ion-item>
+
       </ion-list>
     </ion-content>
   </ion-menu>
 
 
-<!-- tabs.page.html -->
-<ion-tabs>
-  <ion-tab-bar slot="bottom">
-    <ion-tab-button tab="home">
-      <ion-icon name="home"></ion-icon>
-      <ion-label>Home</ion-label>
-    </ion-tab-button>
+  <!-- tabs.page.html -->
+  <ion-tabs>
+    <ion-tab-bar slot="bottom">
+      <ion-tab-button tab="home">
+        <ion-icon name="home"></ion-icon>
+        <ion-label>Home</ion-label>
+      </ion-tab-button>
 
-    <ion-tab-button tab="list">
-      <ion-icon name="list"></ion-icon>
-      <ion-label>List</ion-label>
-    </ion-tab-button>
+      <ion-tab-button tab="list">
+        <ion-icon name="list"></ion-icon>
+        <ion-label>List</ion-label>
+      </ion-tab-button>
 
-    <ion-tab-button tab="setting">
-      <ion-icon name="settings"></ion-icon>
-      <ion-label>Settings</ion-label>
-    </ion-tab-button>
+      <ion-tab-button tab="setting">
+        <ion-icon name="settings"></ion-icon>
+        <ion-label>Settings</ion-label>
+      </ion-tab-button>
 
-    <ion-tab-button tab="pasta">
-      <ion-icon name="pizza"></ion-icon>
-      <ion-label>Pasta</ion-label>
-    </ion-tab-button>
+      <ion-tab-button tab="pasta">
+        <ion-icon name="pizza"></ion-icon>
+        <ion-label>Pasta</ion-label>
+      </ion-tab-button>
 
-    <ion-tab-button tab="newpasta">
-      <ion-icon name="add"></ion-icon>
-      <ion-label>New Pasta</ion-label>
-    </ion-tab-button>
-  </ion-tab-bar>
-</ion-tabs>
+      <ion-tab-button tab="newpasta">
+        <ion-icon name="add"></ion-icon>
+        <ion-label>New Pasta</ion-label>
+      </ion-tab-button>
+    </ion-tab-bar>
+  </ion-tabs>
 
- <!-- Main content must have matching id -->
+  <!-- Main content must have matching id -->
   <div id="main-content">
     <ion-router-outlet></ion-router-outlet>
   </div>

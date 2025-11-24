@@ -39,6 +39,12 @@
 
         <p>{{p.description}}</p>
         <h2>Rp {{p.price}}</h2>
+        <ion-item>
+          <ion-button (click)="addtocart(p.id,p.name,p.price,1)">
+            Add to Cart
+          </ion-button>
+        </ion-item>
+
       </div>
     </ion-accordion>
   </ion-accordion-group>
